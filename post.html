@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="links">
+        <a href="">name</a>
+        <a href="">profile</a>
+        <a href="">Home</a>
+      </div>
+      <div id="nav-btn" class="btn">
+        <button id="loginBtn" onclick="loginClick()" class="button">
+          login
+        </button>
+        <button id="regBtn" class="button" onclick="regClick()">
+          register
+        </button>
+      </div>
+    </nav>
+
+    <div id="post-container" class="container">
+      <div class="card">
+        <div class="header">
+          <div class="pic">
+            <img src="images/pic.png" alt="" />
+          </div>
+          <h3>header</h3>
+        </div>
+        <div class="image">
+          <img src="images/post.png" alt="" />
+          <p class="time">time</p>
+        </div>
+        <div class="text">any text</div>
+        <hr />
+        <div class="comments">
+          <img src="images/pen-solid.svg" alt="" />
+          <p>comments</p>
+          <div class="tag">funny</div>
+        </div>
+      </div>
+
+      <div id="comm-container">
+        <div class="comm">
+          <div class="comm-header">
+            <img src="images/pic.png" alt="" />
+            <h2>user name</h2>
+          </div>
+          <hr />
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+            dolores ad tempora cupiditate repellendus eaque!
+          </p>
+        </div>
+        <div class="comm">
+            <div class="comm-header">
+              <img src="images/pic.png" alt="" />
+              <h2>user name</h2>
+            </div>
+          <hr />
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+            dolores ad tempora cupiditate repellendus eaque!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

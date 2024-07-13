@@ -135,11 +135,23 @@ nav {
   top: 0;
 }
 
+nav img{
+  width: 50px;
+  border-radius: 50%;
+}
+
 nav a {
   text-decoration: none;
   color: black;
   font-size: 20px;
   padding: 30px;
+}
+
+.btn{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 15px;
 }
 
 .btn button {
@@ -184,15 +196,15 @@ hr {
 .header {
   width: 100%;
   background-color: #cbcbcb;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   padding: 10px;
   display: flex;
   justify-content: start;
   align-items: center;
 }
 
-.pic img{
+.pic img, #comm-container img{
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -234,6 +246,25 @@ hr {
   text-align: center;
   margin-left: 30px;
   padding: 0 10px;
+}
+
+.comm{
+  background-color: rgba(173, 173, 173, 0.526);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  color: white;
+}
+
+#comm-container p{
+  margin: 10px 0;
+}
+
+.comm-header{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 50px;
 }
 
 ::-webkit-scrollbar{
