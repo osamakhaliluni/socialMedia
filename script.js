@@ -329,11 +329,15 @@ function handleLogin(element) {
   if (Object.keys(item.profile_image).length > 0) {
     document.getElementById("user-pic").src = item.profile_image;
   }
-  document.getElementsByTagName("body")[0].innerHTML += `
-    <div onclick="addPost()" class="add">
-      <img src="images/plus-solid.svg" alt="">
-    </div>
+  var add = document.createElement("div");
+  add.classList.add("add");
+  add.innerHTML = `
+    <img src="images/plus-solid.svg" alt="">
     `;
+  add.onclick = () => {
+    addPost();
+  };
+  document.getElementsByTagName("body")[0].appendChild(add);
 }
 
 function logout() {
