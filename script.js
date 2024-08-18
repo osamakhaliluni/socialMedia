@@ -58,20 +58,19 @@ let currentPage = 1;
 let lastPage = 1;
 let postId;
 
-window.addEventListener("load", ()=>{
+window.addEventListener("load", () => {
   if (!window.location.toString().includes("post.html")) {
     container.innerHTML = "";
     getReq(currentPage);
-  }
-  else{
+  } else {
     postId = window.location.search.split("=")[1];
-    getPost(1);
+    getPost(postId);
   }
-})
+});
 
-window.addEventListener("scroll", async() => {
+window.addEventListener("scroll", async () => {
   const endOfPage =
-    window.innerHeight + window.pageYOffset >= document.body.offsetHeight -2;
+    window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 2;
   if (endOfPage && currentPage < lastPage) {
     currentPage += 1;
     getReq(currentPage);
@@ -79,35 +78,32 @@ window.addEventListener("scroll", async() => {
   }
 });
 
-function getPost(id){
+function getPost(id) {
+  postContainer.innerHTML = "Loading...";
   var request = new XMLHttpRequest();
-  console.log(`${baseUrl}/posts/${id}`);
   request.open("GET", `${baseUrl}/posts/${id}`);
   request.send();
+  console.log(id);
   request.onload = function () {
     if (request.status >= 200 && request.status < 300) {
       postContainer.innerHTML = "";
       var data = JSON.parse(this.response);
-        var card = document.createElement("div");
-        card.classList.add("card");
-        card.appendChild(getHeader(data.data));
-
-        card.appendChild(getImage(data.data));
-        var text = document.createElement("div");
-        text.classList.add("text");
-        text.innerHTML = data.data.body;
-        var hr = document.createElement("hr");
-        card.appendChild(text);
-        card.appendChild(hr);
-
-        card.appendChild(getComm(data.data));
-        postContainer.appendChild(card);
-        console.log(data.data.comments);
-
-        var commContainer = document.createElement("div");
-        commContainer.id = "comm-container";
-        data.data.comments.forEach((element)=>{
-          commContainer.innerHTML += `
+      var card = document.createElement("div");
+      card.classList.add("card");
+      card.appendChild(getHeader(data.data));
+      card.appendChild(getImage(data.data));
+      var text = document.createElement("div");
+      text.classList.add("text");
+      text.innerHTML = data.data.body;
+      var hr = document.createElement("hr");
+      card.appendChild(text);
+      card.appendChild(hr);
+      card.appendChild(getComm(data.data));
+      postContainer.appendChild(card);
+      var commContainer = document.createElement("div");
+      commContainer.id = "comm-container";
+      data.data.comments.forEach((element) => {
+        commContainer.innerHTML += `
           <div class="comm">
             <div class="comm-header">
               <img src="images/pic.png" alt="" />
@@ -118,8 +114,8 @@ function getPost(id){
             </p>
           </div>
           `;
-        });
-        postContainer.appendChild(commContainer);
+      });
+      postContainer.appendChild(commContainer);
     } else {
       console.log(request.response.message);
     }
@@ -145,10 +141,12 @@ function getReq(currentPage) {
       data.data.forEach((element) => {
         var card = document.createElement("div");
         card.id = element.id;
-        postId = element.id;
         card.style.cursor = "pointer";
         card.classList.add("card");
-        card.addEventListener("click", () => showPost(postId));
+        card.addEventListener("click", () => {
+          postId = element.id;
+          showPost(postId);
+        });
         card.appendChild(getHeader(element));
 
         card.appendChild(getImage(element));
